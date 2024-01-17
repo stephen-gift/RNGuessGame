@@ -3,8 +3,6 @@ import {
   ImageBackground,
   SafeAreaView,
   StyleSheet,
-  Text,
-  View,
 } from "react-native";
 import StartGameScreen from "./screens/StartGameScreen";
 import { LinearGradient } from "expo-linear-gradient";
