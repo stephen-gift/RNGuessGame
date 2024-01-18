@@ -86,25 +86,27 @@ export default function GameScreen({ userNumber, onGameOver }) {
           </View>
         </View>
       </Card>
-      {/* {guessRounds.map((guessRound) => (
+      <View style={styles.list}>
+        {/* {guessRounds.map((guessRound) => (
           <Text key={guessRound}>{guessRound}</Text>
         ))} */}
 
-      <FlatList
-        data={guessRounds}
-        renderItem={(itemdata) => (
-          <GuessLogItem
-            guess={itemdata.item}
-            roundNumber={guessRoundsListLength - itemdata.index}
-          />
-        )}
-        keyExtractor={(itemdata) => itemdata}
-      />
-      {/* <FlatList
+        <FlatList
+          data={guessRounds}
+          renderItem={(itemdata) => (
+            <GuessLogItem
+              guess={itemdata.item}
+              roundNumber={guessRoundsListLength - itemdata.index}
+            />
+          )}
+          keyExtractor={(itemdata) => itemdata}
+        />
+        {/* <FlatList
           data={guessRounds}
           renderItem={({item}) => <Text>{item}</Text>}
          keyExtractor={(item)=>item}
         /> */}
+      </View>
     </View>
   );
 }
@@ -118,4 +120,5 @@ const styles = StyleSheet.create({
   instructionText: { marginBottom: 12 },
   buttonsContainer: { flexDirection: "row" },
   buttonContainer: { flex: 1 },
+  list: { flex: 1 },
 });
