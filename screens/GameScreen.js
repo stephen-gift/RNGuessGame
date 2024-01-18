@@ -3,6 +3,8 @@ import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
 import { useEffect, useState } from "react";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -37,7 +39,7 @@ export default function GameScreen({ userNumber, onGameOver }) {
       return;
     }
     if (direction === "lower") {
-      maxBoundry = currentGuess-1;
+      maxBoundry = currentGuess - 1;
     } else {
       minBoundry = currentGuess + 1;
     }
@@ -52,15 +54,17 @@ export default function GameScreen({ userNumber, onGameOver }) {
     <View style={styles.screen}>
       <Title>Opponents Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View style={styles.buttonContainer}>
-        <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-          -
-        </PrimaryButton>
-        <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
-          +
-        </PrimaryButton>
-      </View>
-      {/* <View>Log Rounds</View> */}
+      <Card>
+        <InstructionText>Higher or Lower</InstructionText>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+            -
+          </PrimaryButton>
+          <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+            +
+          </PrimaryButton>
+        </View>
+      </Card>
     </View>
   );
 }
