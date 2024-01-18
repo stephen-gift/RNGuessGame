@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
   instructionText: {
     color: Colors.accent500,
     fontSize: 20,
+    fontFamily: "open-sans",
   },
   numberInput: {
     height: 50,
@@ -73,6 +74,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     fontWeight: "bold",
     textAlign: "center",
+    fontFamily: "open-sans-bold",
   },
   buttonsContainer: {
     flexDirection: "row",
