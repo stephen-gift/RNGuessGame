@@ -1,7 +1,7 @@
 import { Alert, StyleSheet, Text, View } from "react-native";
 import Title from "../components/ui/Title";
 import NumberContainer from "../components/game/NumberContainer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
 function generateRandomBetween(min, max, exclude) {
@@ -16,9 +16,15 @@ function generateRandomBetween(min, max, exclude) {
 let minBoundry = 1;
 let maxBoundry = 100;
 
-export default function GameScreen({ userNumber }) {
+export default function GameScreen({ userNumber, onGameOver }) {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+
+  useEffect(() => {
+    if (currentGuess === userNumber) {
+      onGameOver();
+    }
+  }, [currentGuess, userNumber, onGameOver]);
 
   function nextGuessHandler(direction) {
     if (
@@ -31,7 +37,7 @@ export default function GameScreen({ userNumber }) {
       return;
     }
     if (direction === "lower") {
-      maxBoundry = currentGuess;
+      maxBoundry = currentGuess-1;
     } else {
       minBoundry = currentGuess + 1;
     }
@@ -47,12 +53,12 @@ export default function GameScreen({ userNumber }) {
       <Title>Opponents Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
-            +
-          </PrimaryButton>
+        <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+          -
+        </PrimaryButton>
+        <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+          +
+        </PrimaryButton>
       </View>
       {/* <View>Log Rounds</View> */}
     </View>
