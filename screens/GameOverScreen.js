@@ -5,7 +5,7 @@ import Colors from "../constants/colors";
 export default function GameOverScreen() {
   return (
     <View style={styles.gameOverContainer}>
-      <View style={styles.titleContainer}>
+      <View >
         <Title>GAME OVER</Title>
       </View>
       <View style={styles.imageContainer}>
@@ -14,6 +14,7 @@ export default function GameOverScreen() {
           source={require("../assets/Images/success.png")}
         />
       </View>
+      <Text>Your phone needed X rounds to guess the number Y.</Text>
     </View>
   );
 }
@@ -21,12 +22,14 @@ export default function GameOverScreen() {
 const styles = StyleSheet.create({
   gameOverContainer: {
     flex: 1,
-    paddingTop: 60,
+    padding: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  titleContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
+  // titleContainer: {
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // },
   imageContainer: {
     justifyContent: 'center',
     alignItems:"center",
