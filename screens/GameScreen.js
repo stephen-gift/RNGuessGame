@@ -41,7 +41,7 @@ export default function GameScreen({ userNumber, onGameOver }) {
       return;
     }
     if (direction === "lower") {
-      maxBoundry = currentGuess - 1;
+      maxBoundry = currentGuess;
     } else {
       minBoundry = currentGuess + 1;
     }
