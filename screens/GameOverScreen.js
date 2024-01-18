@@ -3,7 +3,11 @@ import Title from "../components/ui/Title";
 import Colors from "../constants/colors";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
-export default function GameOverScreen() {
+export default function GameOverScreen({
+  roundsNumber,
+  userNumber,
+  onStartNewGame,
+}) {
   return (
     <View style={styles.gameOverContainer}>
       <View>
@@ -16,10 +20,10 @@ export default function GameOverScreen() {
         />
       </View>
       <Text style={styles.sumaryText}>
-        Your phone needed <Text style={styles.highlightText}>X</Text> rounds to
-        guess the number <Text style={styles.highlightText}>Y</Text>.
+        Your phone needed <Text style={styles.highlightText}>{roundsNumber}</Text> rounds to
+        guess the number <Text style={styles.highlightText}>{userNumber}</Text>.
       </Text>
-      <PrimaryButton>start new Game</PrimaryButton>
+      <PrimaryButton onPress={onStartNewGame}>start new Game</PrimaryButton>
     </View>
   );
 }
@@ -50,6 +54,11 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  sumaryText: { fontFamily: "open-sans", fontSize: 24,textAlign:"center" ,marginVertical:24},
-  highlightText: { fontFamily: "open-sans-bold", color: Colors.primary500, },
+  sumaryText: {
+    fontFamily: "open-sans",
+    fontSize: 24,
+    textAlign: "center",
+    marginVertical: 24,
+  },
+  highlightText: { fontFamily: "open-sans-bold", color: Colors.primary500 },
 });
